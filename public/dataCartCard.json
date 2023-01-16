@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Basique",
+        "img": "https://boogysh.github.io/chateau-api/images/cart_basique.jpg",
+        "isChangeQuantity":"isChangeQuantityBasique",
+        "isChangePrice":"isChangeQPriceBasique"
+        
+    },
+    {
+        "title": "Classique",
+        "img": "https://boogysh.github.io/chateau-api/images/cart_classique.jpg",
+        "isChangeQuantity":"isChangeQuantityClassique",
+        "isChangePrice":"isChangePriceClassique"
+    },
+    {
+        "title": "Decouvrez",
+        "img":"https://boogysh.github.io/chateau-api/images/cart_decouvrez.jpg",
+        "isChangeQuantity":"isChangeQuantityDecouvrez",
+        "isChangePrice":"isChangePriceDecouvrez"
+    },
+    {
+        "title": "Exception",
+        "img": "https://boogysh.github.io/chateau-api/images/cart_classique.jpg",
+        "isChangeQuantity":"isChangeQuantityException",
+        "isChangePrice":"isChangePriceException"
+    }
+        
+]
