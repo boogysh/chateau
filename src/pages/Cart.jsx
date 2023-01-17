@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
@@ -30,86 +30,13 @@ export default function Cart() {
     stateCartDecouvrezPrice,
     stateCartExceptionQuantity,
     stateCartExceptionPrice,
+    stateSolde,
+    stateSoldeText
   } = useSelector((state) => ({
     ...state.AddCartReducer,
   }));
 
-  const [isChangeQuantityBasique, setChangeQuantityBasique] = useState(
-    stateCartBasiqueQuantity
-  );
-  const [isChangePriceBasique, setChangePriceBasique] = useState(
-    stateCartBasiquePrice
-  );
-  const [isChangeQuantityClassique, setChangeQuantityClassique] = useState(
-    stateCartClassiqueQuantity
-  );
-  const [isChangePriceClassique, setChangePriceClassique] = useState(
-    stateCartClassiquePrice
-  );
-  const [isChangeQuantityDecouvrez, setChangeQuantityDecouvrez] = useState(
-    stateCartDecouvrezQuantity
-  );
-  const [isChangePriceDecouvrez, setChangePriceDecouvrez] = useState(
-    stateCartDecouvrezPrice
-  );
-  const [isChangeQuantityException, setChangeQuantityException] = useState(
-    stateCartExceptionQuantity
-  );
-  const [isChangePriceException, setChangePriceException] = useState(
-    stateCartExceptionPrice
-  );
-
   const dispatch = useDispatch();
-
-  const optionBasiqueHandle = (e) => {
-    setChangeQuantityBasique(e.target.value);
-    setChangePriceBasique(e.target.value * priceBasique);
-    dispatch({
-      type: "ADDCART_BASIQUE_QUANTITY",
-      payload: isChangeQuantityBasique,
-    });
-    dispatch({
-      type: "ADDCART_BASIQUE_PRICE",
-      payload: isChangePriceBasique,
-    });
-  };
-
-  const optionClassiqueHandle = (e) => {
-    setChangeQuantityClassique(e.target.value);
-    setChangePriceClassique(e.target.value * priceClassique);
-    dispatch({
-      type: "ADDCART_CLASSIQUE_QUANTITY",
-      payload: isChangeQuantityClassique,
-    });
-    dispatch({
-      type: "ADDCART_CLASSIQUE_PRICE",
-      payload: isChangePriceClassique,
-    });
-  };
-  const optionDecouvrezHandle = (e) => {
-    setChangeQuantityDecouvrez(e.target.value);
-    setChangePriceDecouvrez(e.target.value * priceDecouvrez);
-    dispatch({
-      type: "ADDCART_DECOUVREZ_QUANTITY",
-      payload: isChangeQuantityDecouvrez,
-    });
-    dispatch({
-      type: "ADDCART_DECOUVREZ_PRICE",
-      payload: isChangePriceDecouvrez,
-    });
-  };
-  const optionExceptionHandle = (e) => {
-    setChangeQuantityException(e.target.value);
-    setChangePriceException(e.target.value * priceException);
-    dispatch({
-      type: "ADDCART_EXCEPTION_QUANTITY",
-      payload: isChangeQuantityException,
-    });
-    dispatch({
-      type: "ADDCART_EXCEPTION_PRICE",
-      payload: isChangePriceException,
-    });
-  };
 
   return isLoading ? (
     <Loader />
@@ -120,119 +47,138 @@ export default function Cart() {
         <h3 id="h3">Récapitulatif de mon panier</h3>
         <div className="container_page_panier">
           <div className="container_panier">
+            <h3>Quantity Basique: {stateCartBasiqueQuantity} {stateCartBasiquePrice},</h3>
+            <h3>Quantity Classique: {stateCartClassiqueQuantity} {stateCartClassiquePrice}</h3>
+            <h3>Quantity Decouvrez: {stateCartDecouvrezQuantity} {stateCartDecouvrezPrice}</h3>
+            <h3>Quantity Exception: {stateCartExceptionQuantity} {stateCartExceptionPrice}</h3>
+            <h3>SOLDE: {stateSolde}</h3>
+            <h3>SOLDEtext: {stateSoldeText}</h3>
             {data.map((card) => {
               const { title, img, price } = card;
 
-              const $isChangeQuantityBasique =
-                title === "Basique" && isChangeQuantityBasique
-                // && dispatch({
-                //   type: "ADDCART_BASIQUE_QUANTITY",
-                //   payload: isChangeQuantityBasique,
-                // }) 
-                
-              const $isChangeQuantityClassique =
-                title === "Classique" && isChangeQuantityClassique;
-              const $isChangeQuantityDecouvrez =
-                title === "Decouvrez" && isChangeQuantityDecouvrez;
-              const $isChangeQuantityException =
-                title === "Exception" && isChangeQuantityException;
+              const $isChangeQuantity =
+                (title === "Basique" && stateCartBasiqueQuantity) ||
+                (title === "Classique" && stateCartClassiqueQuantity) ||
+                (title === "Decouvrez" && stateCartDecouvrezQuantity) ||
+                (title === "Exception" && stateCartExceptionQuantity);
 
-              const $isChangePriceBasique =
-                title === "Basique" && isChangePriceBasique;
-                // dispatch({
-                //   type: "ADDCART_BASIQUE_PRICE",
-                //   payload: isChangePriceBasique,
-                // });
-              const $isChangePriceClassique =
-                title === "Classique" && isChangePriceClassique;
-              const $isChangePriceDecouvrez =
-                title === "Decouvrez" && isChangePriceDecouvrez;
-              const $isChangePriceException =
-                title === "Exception" && isChangePriceException;
+              const $isChangePrice =
+                (title === "Basique" && stateCartBasiquePrice) ||
+                (title === "Classique" && stateCartClassiquePrice) ||
+                (title === "Decouvrez" && stateCartDecouvrezPrice) ||
+                (title === "Exception" && stateCartExceptionPrice);
 
-              const $optionBasiqueHandle =
-                title === "Basique" && optionBasiqueHandle;
-              const $optionClassiqueHandle =
-                title === "Classique" && optionClassiqueHandle;
-              const $optionDecouvrezHandle =
-                title === "Decouvrez" && optionDecouvrezHandle;
-              const $optionExceptionHandle =
-                title === "Exception" && optionExceptionHandle;
+              
+
+              const optionHandle = (e) => {
+                (title === "Basique" &&
+                  dispatch({
+                    type: "ADDCART_BASIQUE_QUANTITY",
+                    payload: e.target.value,
+                  }) &&
+                  dispatch({
+                    type: "ADDCART_BASIQUE_PRICE",
+                    payload: e.target.value * priceBasique,
+                  })) ||
+                  (title === "Classique" &&
+                    dispatch({
+                      type: "ADDCART_CLASSIQUE_QUANTITY",
+                      payload: e.target.value,
+                    }) &&
+                    dispatch({
+                      type: "ADDCART_CLASSIQUE_PRICE",
+                      payload: e.target.value * priceClassique,
+                    })) ||
+                  (title === "Decouvrez" &&
+                    dispatch({
+                      type: "ADDCART_DECOUVREZ_QUANTITY",
+                      payload: e.target.value,
+                    }) &&
+                    dispatch({
+                      type: "ADDCART_DECOUVREZ_PRICE",
+                      payload: e.target.value * priceDecouvrez,
+                    })) ||
+                  (title === "Exception" &&
+                    dispatch({
+                      type: "ADDCART_EXCEPTION_QUANTITY",
+                      payload: e.target.value,
+                    }) &&
+                    dispatch({
+                      type: "ADDCART_EXCEPTION_PRICE",
+                      payload: e.target.value * priceException,
+                    }));
+              };
+
+              
 
               const deleteCard = () => {
-                title === "Basique" &&
-                  setChangeQuantityBasique(0) 
-                  // &&
-                  // dispatch({
-                  //   type: "ADDCART_BASIQUE_QUANTITY",
-                  //   payload: isChangeQuantityBasique,
-                  // }) &&
-                  // dispatch({
-                  //   type: "ADDCART_BASIQUE_PRICE",
-                  //   payload: isChangePriceBasique,
-                  // });
-
-                title === "Classique" &&
-                  setChangeQuantityClassique(0) &&
+                (title === "Basique" &&
                   dispatch({
-                    type: "ADDCART_CLASSIQUE_QUANTITY",
-                    payload: isChangeQuantityClassique,
+                    type: "ADDCART_BASIQUE_QUANTITY",
+                    payload: 0,
                   }) &&
                   dispatch({
-                    type: "ADDCART_CLASSIQUE_PRICE",
-                    payload: isChangePriceClassique,
-                  });
-
-                title === "Decouvrez" &&
-                  setChangeQuantityDecouvrez(0) &&
-                  dispatch({
-                    type: "ADDCART_DECOUVREZ_QUANTITY",
-                    payload: isChangeQuantityDecouvrez,
+                    type: "ADDCART_BASIQUE_PRICE",
+                    payload: 0,
                   }) &&
                   dispatch({
-                    type: "ADDCART_DECOUVREZ_PRICE",
-                    payload: isChangePriceDecouvrez,
-                  });
-
-                title === "Exception" &&
-                  setChangeQuantityException(0) &&
-                  dispatch({
-                    type: "ADDCART_EXCEPTION_QUANTITY",
-                    payload: isChangeQuantityException,
-                  }) &&
-                  dispatch({
-                    type: "ADDCART_EXCEPTION_PRICE",
-                    payload: isChangePriceException,
-                  });
+                    type: "SOLDE",
+                    payload: 0,
+                  })) ||
+                  (title === "Classique" &&
+                    dispatch({
+                      type: "ADDCART_CLASSIQUE_QUANTITY",
+                      payload: 0,
+                    }) &&
+                    dispatch({
+                      type: "ADDCART_CLASSIQUE_PRICE",
+                      payload: 0,
+                    }) &&
+                    dispatch({
+                      type: "SOLDE",
+                      payload: 0,
+                    })) ||
+                  (title === "Decouvrez" &&
+                    dispatch({
+                      type: "ADDCART_DECOUVREZ_QUANTITY",
+                      payload: 0,
+                    }) &&
+                    dispatch({
+                      type: "ADDCART_DECOUVREZ_PRICE",
+                      payload: 0,
+                    }) &&
+                    dispatch({
+                      type: "SOLDE",
+                      payload: 0,
+                    })) ||
+                  (title === "Exception" &&
+                    dispatch({
+                      type: "ADDCART_EXCEPTION_QUANTITY",
+                      payload: 0,
+                    }) &&
+                    dispatch({
+                      type: "ADDCART_EXCEPTION_PRICE",
+                      payload: 0,
+                    }) &&
+                    dispatch({
+                      type: "SOLDE",
+                      payload: 0,
+                    }));
               };
               return (
                 <CartCard
                   title={title}
                   src={img}
                   price={price}
-                  isChangeQuantity={
-                    $isChangeQuantityBasique ||
-                    $isChangeQuantityClassique ||
-                    $isChangeQuantityDecouvrez ||
-                    $isChangeQuantityException
-                  }
-                  isChangePrice={
-                    $isChangePriceBasique ||
-                    $isChangePriceClassique ||
-                    $isChangePriceDecouvrez ||
-                    $isChangePriceException
-                  }
-                  optionHandle={
-                    $optionBasiqueHandle ||
-                    $optionClassiqueHandle ||
-                    $optionDecouvrezHandle ||
-                    $optionExceptionHandle
-                  }
+                  isChangeQuantity={$isChangeQuantity}
+                  isChangePrice={$isChangePrice}
+                  optionHandle={optionHandle }
                   deleteCard={deleteCard}
                 />
               );
             })}
           </div>
+
           <TotalCart />
         </div>
       </section>

@@ -22,6 +22,8 @@ export default function CartCard(props) {
           onFocus={generateOptions}
           onChange={props.optionHandle}
           id={`quantite_${props.title}`}
+          className='optionHandle'
+          
         >
           <option
             value={props.isChangeQuantity}

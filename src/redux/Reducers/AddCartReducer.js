@@ -1,10 +1,13 @@
 const INITIAL_STATE = {
-  cart: 0,
-
   priceBasique: 14,
   priceClassique: 24,
   priceDecouvrez: 49,
   priceException: 70,
+
+  stateSolde: 0,
+
+  stateTotal:0,
+  
 
   stateCartBasiqueQuantity: 0,
   stateCartBasiquePrice: 0,
@@ -17,15 +20,26 @@ const INITIAL_STATE = {
 
   stateCartExceptionQuantity: 0,
   stateCartExceptionPrice: 0,
+
+  // stateTotal: 0,
 };
 function AddCartReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case "ADDCART": {
+
+    case "TOTAL": {
       return {
         ...state,
-        cart: action.payload,
+        stateTotal: action.payload,
       };
     }
+    
+    case "SOLDE": {
+      return {
+        ...state,
+        stateSolde: action.payload,
+      };
+    }
+    
     case "ADDCART_BASIQUE_QUANTITY": {
       return {
         ...state,
