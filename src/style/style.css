@@ -18,11 +18,11 @@
 }
 @font-face {
   font-family: "Titre_H1";
-  src: url(assets/fonts/BeauRivage-Regular.ttf);
+  src: url(../assets/fonts/BeauRivage-Regular.ttf);
 }
 @font-face {
   font-family: "Great_vibes";
-  src: url(assets/fonts/GreatVibes-Regular.otf);
+  src: url(../assets/fonts/GreatVibes-Regular.otf);
 }
 .container_header {
   width: 100%;
@@ -47,7 +47,7 @@ header {
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
-  background-image: url(assets/images-ext/entree_chateau.jpg);
+  background-image: url(../assets/images-ext/entree_chateau.jpg);
   background-size: cover;
   background-position: center;
   height: 370px;
@@ -113,15 +113,21 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
-.menu a {
+.nav_item {
   color: #f1f1f1;
   text-decoration: none;
-  font-size: 1.8em;
+  font-size: 1.65em;
   text-transform: uppercase;
   padding: 0 20px;
   font-family: none;
 }
-.menu a::after {
+.nav_item a{
+  text-decoration: none;
+}
+
+  
+  
+.nav_item::after {
   content: "";
   display: block;
   width: 0%;
@@ -130,9 +136,11 @@ h1 {
   transition: width 0.5s;
   margin: 0 auto;
 }
-.menu a:hover::after {
+.nav_item:hover::after {
   width: 100%;
 }
+
+
 header p {
   position: absolute;
   top: 20px;
@@ -143,25 +151,50 @@ header p {
 }
 .shopping-cart-link {
   display: flex;
+  width: auto;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  margin-left: 20px;
+  
+
+}
+.shopping-cart-link:hover::after{
+  display: none;
+}
+  
+  
+.shopping-cart{
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  padding: 10px !important;
-  background-color: #f1f1f1;
+  text-decoration: none!important;
+}
+.shopping_cart_img{ 
+  width: 25px;
+  height: 25px;
+  /* background: transparent!important; */
+}
+.shopping-cart_h5{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(19, 19, 19);
+  padding-left: 10px;
+  padding-top: 3px;
+  text-decoration: none;
+
 }
 
-.shopping-cart {
-  width: 16px;
-  height: 18px;
-  background-color: #f1f1f1;
-}
+
+
 
 /*-------header-nav---media------*/
 
 @media screen and (max-width: 1380px) {
-  .menu a {
+  .nav_item {
     font-size: 1.4em;
     padding: 10px;
   }
@@ -178,7 +211,7 @@ header p {
   }
 }
 @media screen and (max-width: 1120px) {
-  .menu a {
+  .nav_item {
     font-size: 1.3em;
   }
   .titre h1 {
@@ -195,7 +228,7 @@ header p {
   }
 }
 @media screen and (max-width: 1000px) {
-  .menu a {
+  .nav_item {
     font-size: 1.1em;
   }
   .titre h1 {
@@ -252,7 +285,7 @@ header p {
   .menu {
     padding: 10px 0;
   }
-  .menu a {
+  .nav_item {
     padding: 10px;
   }
 
@@ -290,7 +323,7 @@ header p {
   .titre h1 {
     font-size: 1.8em;
   }
-  .menu a {
+  .nav_item {
     padding: 5px;
     font-size: 16px;
   }
@@ -427,7 +460,7 @@ header p {
   align-items: center;
   width: 100%;
   height: 200px;
-  background-image: url(assets/images_int/int_6_parallax.jpg);
+  background-image: url(../assets/images_int/int_6_parallax.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -655,7 +688,7 @@ header p {
   align-items: center;
   width: 100%;
   height: 150px;
-  background-image: url(assets/images-ext/lac_chateau_parallax.jpg);
+  background-image: url(../assets/images-ext/lac_chateau_parallax.jpg);
   background-attachment: fixed;
   background-size: cover;
   text-shadow: 1px 1px 4px white;
@@ -931,7 +964,7 @@ header p {
 #horaires {
   width: 100%;
   display: flex;
-  background-image: url(assets/scrrenshot/plan_chateau_large_1.jpg);
+  background-image: url(../assets/scrrenshot/plan_chateau_large_1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   max-width: 1600px;
@@ -980,7 +1013,7 @@ header p {
   .bg_horaires {
     width: 400px;
     height: 900px;
-    background-image: url(assets/scrrenshot/plan_chateau_large_media.jpg);
+    background-image: url(../assets/scrrenshot/plan_chateau_large_media.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1128,7 +1161,7 @@ footer p {
   font-size: 3em;
   font-family: Titre_H1, sans-serif;
   text-align: center;
-  margin: 30px;
+  margin: 80px;
 }
 .container_panier {
   display: flex;

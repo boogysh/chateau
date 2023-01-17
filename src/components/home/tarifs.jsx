@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CardBasique from "../cards/CardBasique";
-import CardClassique from "../cards/CardClassique";
+import CardBasique from "./cards/CardBasique";
+import CardClassique from "./cards/CardClassique";
 
-import CardDecouvrez from "../cards/CardDecouvrez";
-import CardException from "../cards/CardException";
+import CardDecouvrez from "./cards/CardDecouvrez";
+import CardException from "./cards/CardException";
 
 export default function Tarifs() {
   return (

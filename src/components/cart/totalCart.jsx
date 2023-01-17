@@ -7,7 +7,7 @@ import imgCbPayPal from "../../assets/cartes_bancaires/paypal.jpg";
 import imgCbAmericanExpress from "../../assets/cartes_bancaires/american_express.jpg";
 import { useSelector, useDispatch } from "react-redux";
 
-import "../../style.css";
+
 
 export default function TotalCart() {
   const dispatch = useDispatch();

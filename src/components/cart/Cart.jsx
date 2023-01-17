@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import Banner from "../components/banner/Banner";
-import Contact from "../components/contact/Contact";
-import CartCard from "../components/cards/CartCard";
-import Error500 from "../components/errors/Error500";
-import { UseFetch } from "../hooks/useFetch";
-import Loader from "../components/loader/loader";
-import TotalCart from "../components/totalCart/TotalCart";
+import Banner from "../home/banner";
+import Contact from "../home/contact";
+import CartCard from "./cartCard";
+import Error500 from "../errors/Error500";
+import { UseFetch } from "../../hooks/useFetch";
+import Loader from "../common/loader/loader";
+import TotalCart from "./totalCart";
 
 export default function Cart() {
   const { data, isLoading, error } = UseFetch(
@@ -31,7 +31,7 @@ export default function Cart() {
     stateCartExceptionQuantity,
     stateCartExceptionPrice,
     stateSolde,
-    stateSoldeText
+    stateSoldeText,
   } = useSelector((state) => ({
     ...state.AddCartReducer,
   }));
@@ -47,10 +47,22 @@ export default function Cart() {
         <h3 id="h3">Récapitulatif de mon panier</h3>
         <div className="container_page_panier">
           <div className="container_panier">
-            <h3>Quantity Basique: {stateCartBasiqueQuantity} {stateCartBasiquePrice},</h3>
-            <h3>Quantity Classique: {stateCartClassiqueQuantity} {stateCartClassiquePrice}</h3>
-            <h3>Quantity Decouvrez: {stateCartDecouvrezQuantity} {stateCartDecouvrezPrice}</h3>
-            <h3>Quantity Exception: {stateCartExceptionQuantity} {stateCartExceptionPrice}</h3>
+            <h3>
+              Quantity Basique: {stateCartBasiqueQuantity}{" "}
+              {stateCartBasiquePrice},
+            </h3>
+            <h3>
+              Quantity Classique: {stateCartClassiqueQuantity}{" "}
+              {stateCartClassiquePrice}
+            </h3>
+            <h3>
+              Quantity Decouvrez: {stateCartDecouvrezQuantity}{" "}
+              {stateCartDecouvrezPrice}
+            </h3>
+            <h3>
+              Quantity Exception: {stateCartExceptionQuantity}{" "}
+              {stateCartExceptionPrice}
+            </h3>
             <h3>SOLDE: {stateSolde}</h3>
             <h3>SOLDEtext: {stateSoldeText}</h3>
             {data.map((card) => {
@@ -67,8 +79,6 @@ export default function Cart() {
                 (title === "Classique" && stateCartClassiquePrice) ||
                 (title === "Decouvrez" && stateCartDecouvrezPrice) ||
                 (title === "Exception" && stateCartExceptionPrice);
-
-              
 
               const optionHandle = (e) => {
                 (title === "Basique" &&
@@ -108,8 +118,6 @@ export default function Cart() {
                       payload: e.target.value * priceException,
                     }));
               };
-
-              
 
               const deleteCard = () => {
                 (title === "Basique" &&
@@ -172,7 +180,7 @@ export default function Cart() {
                   price={price}
                   isChangeQuantity={$isChangeQuantity}
                   isChangePrice={$isChangePrice}
-                  optionHandle={optionHandle }
+                  optionHandle={optionHandle}
                   deleteCard={deleteCard}
                 />
               );

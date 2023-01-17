@@ -1,6 +1,6 @@
 import React from 'react'
 import iconChateau from "../../assets/icons/chateau_f3.png";
-import "../../style.css"
+// import "../../style.css"
 
 
 export default function Banner() {
