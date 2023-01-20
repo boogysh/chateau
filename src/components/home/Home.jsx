@@ -1,7 +1,6 @@
 import React from "react";
-import Sites from "./sites";
+//import Sites from "./sites";
 import Introduction from "./introduction";
-// import Apparements from "../components/appartements/Apparements";
 import Parc from "./parc";
 import Tarifs from "./tarifs";
 import Horaires from "./horaires";
@@ -15,7 +14,7 @@ export default function Home() {
     <main id="accueil" className="container_page">
       <Banner />
       <div className="separateur_1"></div>
-      <Sites />
+      {/* <Sites /> */}
       <div id="parallax"></div>
       <Introduction />
       <Apparements />

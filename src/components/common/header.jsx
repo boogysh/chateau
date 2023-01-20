@@ -1,11 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+//import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import iconCart from "../../assets/icons/shopping-bag.png";
 import "../../style/style.css";
 
 export default function Header() {
+  const dataCart = useSelector((state) => state.cartReducer.carts);
+
+  const [quantity, setQuantity] = useState(0);
+
+  const totals = () => {
+    let quantity = 0;
+    dataCart.map((e) => {
+      return (quantity =(e.qty) + quantity);
+    });
+    setQuantity(quantity);
+  };
+
+  useEffect(() => {
+    totals();
+  }, [totals]);
+  // const dispatch = useDispatch();
+
   return (
     <div className="container_header">
       <nav id="nav">
@@ -29,17 +48,32 @@ export default function Header() {
             <HashLink smooth to="/#contact" className="nav_item">
               Contact
             </HashLink>
-            <Link to="/panier" className="nav_item shopping-cart-link">
-              <HashLink smooth to="/panier#panier" className="nav_item_panier">
+            <HashLink
+              smooth
+              to="/panier#panier"
+              className="nav_item shopping-cart-link"
+            >
               <div className="shopping-cart">
-                <img className="shopping_cart_img" src={iconCart} alt="panier" />
-                <h5 className="shopping-cart_h5">MON PANIER</h5>
+                <img
+                  className="shopping_cart_img"
+                  src={iconCart}
+                  alt="panier"
+                />
+                <h5 className="shopping-cart_h5">
+                 {quantity}
+                </h5>
               </div>
-              </HashLink>
-            </Link>
+              {/* <HashLink className="nav_item_panier"></HashLink> */}
+            </HashLink>
           </li>
         </ul>
       </nav>
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    amount: state.amount,
+  };
+};
+connect(mapStateToProps)(Header);

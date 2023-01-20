@@ -6,7 +6,7 @@ export default function Contact() {
       <h4>Contactez nous...</h4>
       <div className="container-form">
         <form method="post" action="traitement.php">
-          <label for="prenom">Prénom</label>
+          <label htmlFor="prenom">Prénom</label>
           <div className="container_input_p">
             <input
               type="text"
@@ -19,21 +19,21 @@ export default function Contact() {
               ☆
             </span>
           </div>
-          <label for="nom">Nom</label>
+          <label htmlFor="nom">Nom</label>
           <div className="container_input_p">
             <input type="text" placeholder="Nom" name="nom" id="nom" required />
             <span role="img" aria-label="star" className="star">
               ☆
             </span>
           </div>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <div className="container_input_p">
             <input type="email" placeholder="Email" name="email" id="email" />
             <span role="img" aria-label="star" className="star">
               ☆
             </span>
           </div>
-          <label for="tel">Tel:</label>
+          <label htmlFor="tel">Tel:</label>
           <div className="container_input_p">
             <input
               type="email"
