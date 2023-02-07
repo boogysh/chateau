@@ -1,0 +1,51 @@
+[
+    {
+        "id": "Basique",
+        "title": "Basique",
+        "img": "https://boogysh.github.io/chateau-api/images/cart_basique.jpg",
+        "li_1":"✔️",
+        "li_2":"❌",
+        "li_3":"❌",
+        "li_4":"❌",
+        "li_5":"❌",
+        "li_6":"❌",
+        "price":14
+    },
+    {
+        "id": "Classique",
+        "title": "Classique",
+        "img": "https://boogysh.github.io/chateau-api/images/cart_classique.jpg",
+        "li_1":"✔️",
+        "li_2":"✔️",
+        "li_3":"❌",
+        "li_4":"❌",
+        "li_5":"❌",
+        "li_6":"❌",
+        "price":24
+    },
+    {
+        "id": "Decouvrez",
+        "title": "Decouvrez",
+        "img":"https://boogysh.github.io/chateau-api/images/cart_decouvrez.jpg",
+        "li_1":"✔️",
+        "li_2":"✔️",
+        "li_3":"✔️",
+        "li_4":"✔️",
+        "li_5":"❌",
+        "li_6":"❌",
+        "price": 49
+    },
+    {
+        "id": "Exception",
+        "title": "Exception",
+        "img": "https://boogysh.github.io/chateau-api/images/cart_classique.jpg",
+        "li_1":"✔️",
+        "li_2":"✔️",
+        "li_3":"✔️",
+        "li_4":"✔️",
+        "li_5":"✔️",
+        "li_6":"✔️",
+        "price": 70
+    }
+        
+]
