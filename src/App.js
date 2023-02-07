@@ -11,7 +11,7 @@ import OrderPageConfirmation from "./components/order/orderPageConfirmation";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/chateau/">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
