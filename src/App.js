@@ -1,18 +1,27 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import Error404 from "./components/errors/Error404";
-import Home from "./components/home/Home";
+import HomePage from "./components/home/HomePage";
 import Header from "./components/common/header";
 import Footer from "./components/common/footer";
-import Cart from "./components/cart/Cart";
+import CartPage from "./components/cart/CartPage";
+import OrderPage from "./components/order/orderPage.jsx";
+import OrderPageConfirmation from "./components/order/orderPageConfirmation";
+//import Banner from "./components/home/banner";
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/panier" element={<Cart />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/panier" element={<CartPage />} />
+        <Route path="/commande" element={<OrderPage />} />
+        {/* <Route
+          path="/commande/confirmation"
+          element={<OrderPageConfirmation />}
+        /> */}
+        <Route path="/commande/:id" element={<OrderPageConfirmation />} />
 
         <Route path="*" element={<Error404 />} />
       </Routes>

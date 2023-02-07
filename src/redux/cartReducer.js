@@ -1,31 +1,65 @@
 // import { ADD_CART, REMOVE, REMOVE_ITEM } from "./type";
+import { SOLDE } from "./type";
 
 const initialStore = {
   carts: [],
   solde: 0,
-  codeSolde: ""
+  codeSolde: "CODE5", //must be process.env.CODE_SOLDE
+  inputCodeSolde: "",
+  clientInfo: [],
+  totalPrice: 0, // to display on OrderPage
+  orderDetails: [],
+  email: "",
+  findEmail: "",
 };
-
 // reducer
 function cartReducer(state = initialStore, action) {
   switch (action.type) {
-    case "SOLDE" :
+    case "FIND_EMAIL":
       return {
         ...state,
-        solde:  action.payload,
-        //---------------------------
-        
+        findEmail: action.payload,
+      };
 
+    case "EMAIL":
+      return {
+        ...state,
+        email: action.payload,
+      };
 
-        
+    case "ORDER_DETAILS":
+      return {
+        ...state,
+        orderDetails: action.payload,
+      };
+
+    case "PRICE":
+      return {
+        ...state,
+        totalPrice: action.payload,
+      };
+    case "CLIENT_INFO":
+      return {
+        ...state,
+        clientInfo: action.payload,
+      };
+    case SOLDE:
+      return {
+        ...state,
+        solde: action.payload,
         //-------------------------------
-      }
-      case "CODE_SOLDE" :
+      };
+    case "CODE_SOLDE":
       return {
         ...state,
         codeSolde: action.payload,
-      }
-    
+      };
+    case "INPUT_CODE_SOLDE":
+      return {
+        ...state,
+        inputCodeSolde: action.payload,
+      };
+
     case "ADD_CART":
       // return {
       //   ...state,
@@ -52,8 +86,7 @@ function cartReducer(state = initialStore, action) {
       if (itemIndex >= 0) {
         // state.carts[itemIndex].qty += 1;
         state.carts[itemIndex].qty += 0;
-      } 
-      else {
+      } else {
         const temp = { ...action.payload, qty: 1 };
         return {
           ...state,
@@ -67,8 +100,9 @@ function cartReducer(state = initialStore, action) {
         (item) => item.id === action.payload.id
       );
       if (state.carts[itemIndex_incr].qty >= 1) {
-        const add_item = (state.carts[itemIndex_incr].qty += 1);
-        console.log([...state.carts, add_item]);
+        state.carts[itemIndex_incr].qty += 1;
+        // const add_item = (state.carts[itemIndex_incr].qty += 1);
+        // console.log([...state.carts, add_item]);
         return {
           ...state,
           carts: [...state.carts],
@@ -76,11 +110,16 @@ function cartReducer(state = initialStore, action) {
       }
       break;
 
-    case "REMOVE":
+    case "REMOVE_CARD": // DELETE ONE CARD, type of
       const data = state.carts.filter((el) => el.id !== action.payload);
       return {
         ...state,
         carts: data,
+      };
+    case "CLEAN_CART": // DELETE ALL CART
+      return {
+        ...state,
+        carts: [],
       };
 
     case "REMOVE_ITEM":
@@ -104,18 +143,8 @@ function cartReducer(state = initialStore, action) {
       // }
       break;
 
-    case "PRICE_ITEM": {
-      return {
-        ...state,
-        // cardPrice: [...state.carts, action.payload],
-        cardPrice: action.payload,
-      };
-    }
-
     default: //doo nothing
   }
   return state;
 }
 export default cartReducer;
-
-

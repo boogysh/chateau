@@ -1,38 +1,40 @@
 import React from "react";
-//import  { useState} from "react";
 import imgCorbeille from "../../assets/icons/corbeille.png";
-//import {useState,useEffect} from "react";
-//import { useSelector } from "react-redux";
-//import { useDispatch } from "react-redux";
-//import { ADD } from "../../redux/action";
 
 export default function CartCard(props) {
   return (
-    <div className="container_article_panier">
-      <img src={props.src} alt={`Carte ${props.title}`} />
-      <div className="panier_produit">
-        <h3 className="cart_card_title">{props.title}</h3>
+    <div className="article_cart_container">
+      <img className="article_cart_img" src={props.src} alt={`Carte ${props.title}`} />
+      <div className="article_cart">
+        <div className="article_cart_h3_and_price">
+          <h3 className="article_cart_h3">{props.title}</h3>
+          <span className="article_cart_span">{props.changePrice} €</span>
+        </div>
+        <p className="article_priceUnity">{props.priceUnite} € / unité </p>
+        <div className="cart_card_qty_and_delete">
+          <img
+            onClick={props.deleteCard}
+            id={`corbeille_${props.title}`}
+            className="delete"
 
-        <button className={`btn_decr ${props.dsblDecr}`} onClick={props.decr}>
-          -
-        </button>
-
-        <span className="card_qty">{props.changeQty}</span>
-
-        <button className="btn_incr" onClick={props.incr}>
-          +
-        </button>
-
-        <span className="panier_produit_span">{props.changePrice}€</span>
-        {/* <span className="panier_produit_span">{price}€</span> */}
+            src={imgCorbeille}
+            alt="image_corbeille"
+          />
+          <div className="cart_card_qty">
+            <button
+              className={`btn_decr ${props.dsblDecr}`}
+              onClick={props.decr}
+            >
+              -
+            </button>
+            <span className="card_qty">{props.changeQty}</span>
+            <button className="btn_incr" onClick={props.incr}>
+              +
+            </button>
+          </div>
+        </div>
       </div>
-      <p className="prix_produit">{props.priceUnite} € / unité </p>
-      <img
-        onClick={props.deleteCard}
-        id={`corbeille_${props.title}`}
-        src={imgCorbeille}
-        alt="image_corbeille"
-      />
     </div>
+    
   );
 }

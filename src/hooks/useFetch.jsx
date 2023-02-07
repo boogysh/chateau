@@ -8,7 +8,8 @@ export function UseFetch(url) {
 //   const { id } = useParams()
 
   useEffect(() => {
-    if (!url) return
+    setTimeout(() => {
+      if (!url) return
     setLoading(true)
     async function fetchData() {
       try {
@@ -25,7 +26,32 @@ export function UseFetch(url) {
       }
     }
     fetchData()
+    }, 300);
+    
 //   }, [url, id])
   }, [url])
   return { isLoading, data, error }
 }
+
+// useEffect(() => {
+//   if (!url) return
+//   setLoading(true)
+//   async function fetchData() {
+//     try {
+//       const response = await fetch(url)
+//       const data = await response.json()
+//       setData(data)
+//       //  ||
+//       //   data.find((product) => product.id === id && setData(product))
+//     } catch (err) {
+//       console.log(err)
+//       setError(true)
+//     } finally {
+//       setLoading(false)
+//     }
+//   }
+//   fetchData()
+// //   }, [url, id])
+// }, [url])
+// return { isLoading, data, error }
+// }

@@ -1,4 +1,14 @@
 // import { ADD_CART, REMOVE, REMOVE_ITEM } from "./type"
+ import { SOLDE } from "./type"
+
+
+export const SOLDE_AMOUNT = ( totalPrice, pourcents) => {
+    
+  return {
+    type: SOLDE,
+    payload: totalPrice * pourcents / 100,
+  }
+}
 
 
 // export const ADD = (item) => {

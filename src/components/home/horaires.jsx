@@ -15,11 +15,11 @@ export default function Horaires() {
         </p>
         <br />
         <p>
-          <strong>D'octobre à mars:</strong>9h30 à 17h (dernier accès à 16h15).
+          <strong>D'octobre à mars:</strong> 9h30 à 17h (dernier accès à 16h15).
         </p>
         <br />
         <p>
-          <strong>D'avril à septembre</strong>:9h30 à 18h (dernier accès à
+          <strong>D'avril à septembre</strong> :9h30 à 18h (dernier accès à
           17h15).
         </p>
         <br />

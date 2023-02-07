@@ -9,8 +9,9 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Tarifs() {
   const { data, isLoading, error } = UseFetch(
-    // `https://boogysh.github.io/chateau-api/dataCartCard.json`
-    `dataCartCard.json`
+     `https://boogysh.github.io/chateau-api/dataCartCard.json`
+    //`dataCartCard.json`
+    
   );
   if (error) return <Error500 />;
 
@@ -68,21 +69,22 @@ export default function Tarifs() {
                   <span role="img" aria-label="x">
                     {items.li_6}
                   </span>
-                  <p>Accès à des lieux interdits au public</p>
+                  {/* <p>Accès à des lieux interdits au public</p> */}
+                  <p>Accès à des lieux exclusifs</p>
                 </li>
               </ul>
-              <button onClick={() => addToCartFunc(items)}>
+              <button className="cartes_btn" onClick={() => addToCartFunc(items)}>
                 Ajouter au panier
               </button>
             </div>
           );
         })}
       </div>
-      <div>
+      <button className="btn_to_cart">
         <HashLink smooth to="/panier#panier" id="valide_panier">
           Voir le panier
         </HashLink>
-      </div>
+      </button>
     </section>
   );
 }
