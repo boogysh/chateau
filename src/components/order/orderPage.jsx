@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 //import { nanoid } from "nanoid";
 import Banner from "../home/banner";
-import env from "react-dotenv";
+//import env from "react-dotenv";
 
 export default function OrderPage() {
   const { orderDetails, totalPrice } = useSelector(
@@ -136,7 +136,8 @@ export default function OrderPage() {
     // createOrderNr()
 
     // fetch("http://localhost:4000/api/commandes/", {
-    fetch(`${env.API_HOST}/api/commandes/`, {
+    //fetch(`${env.API_HOST}/api/commandes/`, {
+    fetch(`https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/commandes/`, {
       method: "POST",
       // headers: { "Content-Type": "application/json" },
       headers: {

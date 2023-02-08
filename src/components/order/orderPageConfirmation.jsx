@@ -6,11 +6,12 @@ import Error500 from "../errors/Error500";
 //import Loader from "../common/loader/loader";
 import { UseFetch } from "../../hooks/useFetch";
 import { nanoid } from "nanoid";
-import env from "react-dotenv";
+//import env from "react-dotenv";
 
 
 export default function OrderPageConfirmation() {
-  const { data, error } = UseFetch(`${env.API_HOST}/api/commandes`);
+  // const { data, error } = UseFetch(`${env.API_HOST}/api/commandes`);
+  const { data, error } = UseFetch(`https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/commandes/`);
   if (error) return <Error500 />;
   const { email } = useSelector((state) => state.cartReducer);
   const [show, setShow] = useState(false);

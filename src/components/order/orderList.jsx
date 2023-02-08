@@ -1,5 +1,5 @@
 import React from "react";
-import env from "react-dotenv";
+//import env from "react-dotenv";
 
 import { UseFetch } from "../../hooks/useFetch";
 import Error500 from "../errors/Error500";
@@ -11,8 +11,9 @@ import DropDownOrderList from "../../components/dropDown/dropDownOrderList";
 export default function OrderList(props) {
   //   const { email } = useSelector((state) => state.cartReducer);
   const { data, isLoading, error } = UseFetch(
-    // `http://localhost:4000/api/commandes`
-    `${env.API_HOST}/api/commandes`
+    //`http://localhost:4000/api/commandes`
+    "https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/commandes/"
+    //`${env.API_HOST}/api/commandes`
   );
 
   if (error) return <Error500 />;

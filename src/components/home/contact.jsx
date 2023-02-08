@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 //import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
-import { FN, LN, TEL, EMAIL, MSG } from 
-"../order/data/data.adviceClient";
-import env from "react-dotenv";
-
+import { FN, LN, TEL, EMAIL, MSG } from "../order/data/data.adviceClient";
+//import env from "react-dotenv";
 
 export default function Contact(props) {
   const [isFN, setFN] = useState(null);
@@ -124,24 +122,22 @@ export default function Contact(props) {
     }
   };
   //----------------------------
-  
+
   const messagePost = () => {
     // e.preventDefault();
     if ((isFN, isLN, isEmail, isTel, isMsg)) {
       //fetch("http://localhost:4000/api/messages/", {
-      //fetch("https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/messages/", {
-      fetch(`${env.API_HOST}/api/messages/`, {
+      fetch("https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/messages/", {
+        // fetch(`${env.API_HOST}/api/messages/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contactMsg),
       });
       props.msgConfirm();
     }
-    
     // window.location.href("/");
   };
-  
-  console.log(env.API_HOST)
+  // console.log(env.API_HOST)
 
   //-----------------------------
   return (
