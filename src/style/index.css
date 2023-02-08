@@ -51,6 +51,8 @@ p{
  
 
 body{
+  --primary:black;
+  
   --card_1_bg: #ffafbf;
   --card_2_bg: #ff708d;
   --card_3_bg: #ff5274;

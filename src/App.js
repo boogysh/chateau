@@ -7,7 +7,6 @@ import Footer from "./components/common/footer";
 import CartPage from "./components/cart/CartPage";
 import OrderPage from "./components/order/orderPage.jsx";
 import OrderPageConfirmation from "./components/order/orderPageConfirmation";
-//import Banner from "./components/home/banner";
 
 function App() {
   return (
@@ -18,12 +17,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/panier" element={<CartPage />} />
         <Route path="/commande" element={<OrderPage />} />
-        {/* <Route
-          path="/commande/confirmation"
-          element={<OrderPageConfirmation />}
-        /> */}
         <Route path="/commande/:id" element={<OrderPageConfirmation />} />
-
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
