@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Tarifs() {
   const { data, isLoading, error } = UseFetch(
      `https://boogysh.github.io/chateau-api/dataCartCard.json`
-    //`dataCartCard.json`
+    
     
   );
   if (error) return <Error500 />;
