@@ -9005,7 +9005,6 @@ rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
 
 
 
-//import Banner from "./components/home/banner";
 
 function App() {
   return (
@@ -16658,4 +16657,4 @@ module.exports = __webpack_require__(46);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.6da6fa44.js.map
+//# sourceMappingURL=main.f885f33f.js.map
